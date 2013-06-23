@@ -62,18 +62,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Qualcomm random numbers generated
 PRODUCT_PACKAGES += qrngd
 
-# OpenGL ES
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=131072
-
 # QCOM Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
     debug.egl.hw=1 \
     debug.composition.type=dyn \
     persist.hwc.mdpcomp.enable=true \
-    debug.mdpcomp.logs=0 \
-    ro.hwui.text_cache_width=2048
+    debug.mdpcomp.logs=0
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \

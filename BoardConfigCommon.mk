@@ -26,7 +26,6 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_SMP := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
 
 # Power HAL
 TARGET_PROVIDES_POWERHAL := true
@@ -39,7 +38,6 @@ TARGET_USES_C2D_COMPOSITION := true
 
 # Camera
 TARGET_PROVIDES_CAMERA_HAL := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK -DMR0_CAMERA_BLOB
 COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 
 ifeq ($(BOARD_EGL_CFG),)
@@ -53,9 +51,43 @@ BOARD_PROVIDES_LIBRIL := true
 TARGET_QCOM_AUDIO_VARIANT := caf
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 
+# QCOM enhanced A/V
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
 # Bluetoth
 BOARD_HAVE_BLUETOOTH := true
 
 # Webkit
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
+
+BOARD_SEPOLICY_DIRS += \
+    device/sony/qcom-common/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    file_contexts \
+    property_contexts \
+    te_macros \
+    bluetooth_loader.te \
+    bridge.te \
+    camera.te \
+    device.te \
+    dhcp.te \
+    domain.te \
+    drmserver.te \
+    file.te \
+    kickstart.te \
+    init.te \
+    mediaserver.te \
+    mpdecision.te \
+    netmgrd.te \
+    property.te \
+    qmux.te \
+    rild.te \
+    rmt.te \
+    surfaceflinger.te \
+    system.te \
+    tee.te \
+    thermald.te \
+    ueventd.te \
+    wpa_supplicant.te
